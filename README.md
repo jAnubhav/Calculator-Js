@@ -14,3 +14,6 @@ A Calculator developed using HTML, CSS and JavaScript. It can perform operations
 3.Enter the second number.
 
 4.Click the equals (=) button to see the result of the operation.
+
+### Sample ###
+![Calculator Screen](./sample.png)
