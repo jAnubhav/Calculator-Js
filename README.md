@@ -6,7 +6,7 @@ A Calculator developed using HTML, CSS and JavaScript. It can perform operations
 - Division(/)
 - Delete/All Clear(DEL/AC)
 
-#### How To Use ####
+### How To Use ###
 1.Enter the first number using the numeric keypad.
 
 2.Select the desired operation (+, -, ×, ÷) by clicking the corresponding button.
@@ -15,5 +15,5 @@ A Calculator developed using HTML, CSS and JavaScript. It can perform operations
 
 4.Click the equals (=) button to see the result of the operation.
 
-### Sample ###
+## Sample ##
 ![Calculator Screen](./sample.png)
