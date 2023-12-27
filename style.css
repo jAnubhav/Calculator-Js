@@ -1,17 +1,3 @@
-:root {
-    --bg-color: #9e4636;
-    --calc-color: #461d1d;
-    --grey: #dbdada;
-    --grey-dark: #b8b8b8;
-    --operator-color: #eb8c8c;
-    --operator-color-dark: #c26363;
-    --clearings-color: #b32323;
-    --clearings-color-dark: #811c1c;
-    --equals-color: #e9803a;
-    --equals-color-dark: #bb6125;
-    --white: #ffffff;
-}
-
 * {
     margin: 0;
     padding: 0;
@@ -21,7 +7,7 @@
 
 body {
     height: 100vh;
-    background: var(--bg-color);
+    background: #9e4636;
 }
 
 button {
@@ -36,9 +22,7 @@ button {
 }
 
 #container {
-    display: flex;
     flex-direction: column;
-    font-weight: 600;
 }
 
 .spacing {
@@ -50,12 +34,14 @@ button {
 }
 
 #title {
-    display: flex;
     justify-content: space-between;
     align-items: center;
     padding-inline: 10px;
-    color: var(--white);
     font-size: 1.1em;
+}
+
+#container, #title {
+    display: flex;
 }
 
 #entry {
@@ -65,7 +51,7 @@ button {
 }
 
 #title, #entry {
-    color: var(--white);
+    color: white;
 }
 
 #numpad {
@@ -74,7 +60,7 @@ button {
 
 #entry, #numpad {
     padding: 15px;
-    background: var(--calc-color);
+    background: #461d1d;
 }
 
 #numbers {
@@ -90,37 +76,40 @@ button {
     width: 60px;
     height: 40px;
     margin: 5px;
-    background: var(--grey);
+    background: #dadada;
     font-size: 1.2em;
+}
+
+#container, .btn {
     font-weight: 600;
 }
 
 .btn:hover {
-    background: var(--grey-dark);
+    background: #b8b8b8;
 }
 
 .operators {
-    background: var(--operator-color);
+    background: #eb8c8c;
 }
 
 .operators:hover {
-    background: var(--operator-color-dark);
+    background: #c26363;
 }
 
 .clearings {
     width: 130px;
-    background: var(--clearings-color);
-    color: var(--white);
+    background: #b32323;
+    color: white;
 }
 
 .clearings:hover {
-    background: var(--clearings-color-dark);
+    background: #811c1c;
 }
 
 .equals {
-    background: var(--equals-color);
+    background: #e9803a;
 }
 
 .equals:hover {
-    background: var(--equals-color-dark);
+    background: #bb6125;
 }
