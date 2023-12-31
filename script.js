@@ -1,34 +1,45 @@
-const checkOperator = text => "/*-+".includes(text);
+const checkOperator = char => "+-*/".includes(char);
 
-const addInEntry = text => {
-    if (entry.innerText == "Error" || text == "AC") allClear();
+const getText = () => entry.innerHTML;
 
-    if (text == "DEL") delText();
-    else if (entry.innerText != "0" && entry.innerText.length < 15) {
-        if (checkOperator(text) && "/*-+".includes(entry.innerText[entry.innerText.length - 1])) delText();
-        entry.innerText += text;
-    } else {
-        if (!checkOperator(text)) entry.innerText = text;
+const getLength = () => getText().length;
+
+const newText = text => entry.innerHTML = text;
+
+const addText = text => newText(getText() + text);
+
+const replaceChar = (char = "") => newText(getText().slice(0, getLength() - 1) + char);
+
+const createButton = (text, className, func = addInEntry) => Object.assign(document.createElement("button"), { className: `d-grid btn round ${className}`, innerHTML: text, onclick: () => func(text) });
+
+const delText = () => newText((getLength() == 1)?0:replaceChar());
+
+const findResult = () => {
+    try {
+        newText(eval(getText()));
+        if (getText() == "Infinity") throw e
+    } catch (e) {
+        newText("Error");
     }
 }
 
-const delText = () => {
-    entry.innerText = entry.innerText.slice(0, entry.innerText.length - 1);
-    if (entry.innerText.length == 0) allClear();
+const addInEntry = char => {
+    if (char == "AC") newText(0);
+    else if (char == "DEL") delText();
+    else if (["0", "Error"].includes(getText()) && !checkOperator(char)) newText(char);
+    else if(checkOperator(char) && checkOperator(getText()[getLength() - 1])) replaceChar(char);
+    else addText(char);
 }
-
-const allClear = () => entry.innerText = 0;
-
-const findResult = () => {
-    try { entry.innerText = eval(entry.innerText); if (entry.innerText.includes("Infinity")) throw e }
-    catch (e) { entry.innerText = "Error"; }
-}
-
-const createButton = (text, className, func = addInEntry) => Object.assign(document.createElement("button"), { className: `d-grid btn round ${className}`, innerHTML: text, onclick: () => func(text) });
 
 const containers = document.getElementById("numpad").children;
 const entry = document.getElementById("entry");
 
-[[Array.from("789456123.0"), ""], [Array.from("/*-+"), "operators"], [["DEL", "AC"], "clearings"]].forEach(([keys, className], index) => keys.forEach(e => containers[index].append(createButton(e, className))));
+const numpadKeys = [
+    [Array.from("789456123.0"), ""],
+    [Array.from("/*-+"), "operators"],
+    [["DEL", "AC"], "clearings"]
+]
+
+numpadKeys.forEach(([keys, cName], ind) => keys.forEach(e => containers[ind].append(createButton(e, cName))));
 
 containers[0].append(createButton("=", "equals", findResult));
