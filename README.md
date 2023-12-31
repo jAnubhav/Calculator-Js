@@ -1,4 +1,4 @@
-# Calculator-Js
+# Calculator
 A Calculator developed using HTML, CSS and JavaScript. It can perform operations:
 - Addition(+)
 - Subtraction(-)
