@@ -5,6 +5,10 @@
     box-sizing: border-box;
 }
 
+::-webkit-scrollbar {
+    height: 0;
+}
+
 body {
     height: 100vh;
     background: #9e4636;
@@ -23,10 +27,11 @@ button {
 
 #container {
     flex-direction: column;
+    width: 310px;
 }
 
 .spacing {
-    gap: 12px;
+    gap: 10px;
 }
 
 .round {
@@ -44,21 +49,26 @@ button {
     display: flex;
 }
 
-#entry {
+#entry-box {
+    width: 100%;
     text-align: right;
     font-size: 1.8em;
-    overflow: hidden;
 }
 
 #title, #entry {
     color: white;
 }
 
+#entry {
+    justify-content: flex-end;
+    overflow-x: scroll;
+}
+
 #numpad {
     grid-template-columns: 3fr 1fr;
 }
 
-#entry, #numpad {
+#entry-box, #numpad {
     padding: 15px;
     background: #461d1d;
 }
