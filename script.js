@@ -26,20 +26,14 @@ const findResult = () => {
 const addInEntry = char => {
     if (char == "AC") newText(0);
     else if (char == "DEL") delText();
-    else if (["0", "Error"].includes(getText()) && !checkOperator(char)) newText(char);
-    else if(checkOperator(char) && checkOperator(getText()[getLength() - 1])) replaceChar(char);
+    else if (["0", "Error"].includes(getText())) (checkOperator(char))?{}:newText(char);
+    else if (checkOperator(char) && checkOperator(getText()[getLength() - 1])) replaceChar(char);
     else addText(char);
 }
 
 const containers = document.getElementById("numpad").children;
 const entry = document.getElementById("entry");
 
-const numpadKeys = [
-    [Array.from("789456123.0"), ""],
-    [Array.from("/*-+"), "operators"],
-    [["DEL", "AC"], "clearings"]
-]
-
-numpadKeys.forEach(([keys, cName], ind) => keys.forEach(e => containers[ind].append(createButton(e, cName))));
+[[Array.from("789456123.0"), ""], [Array.from("/*-+"), "operators"], [["DEL", "AC"], "clearings"]].forEach(([keys, cName], ind) => keys.forEach(e => containers[ind].append(createButton(e, cName))));
 
 containers[0].append(createButton("=", "equals", findResult));
