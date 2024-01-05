@@ -4,13 +4,9 @@ const getText = () => entry.innerHTML;
 
 const getLength = () => getText().length;
 
-const newText = text => entry.innerHTML = text;
-
-const addText = text => entry.innerHTML += text;
+const newText = (text, preText = "") => entry.innerHTML = preText + text;
 
 const replaceChar = (char = "") => newText(getText().slice(0, getLength() - 1) + char);
-
-const delText = () => (getLength() == 1) ? newText(0) : replaceChar();
 
 const createNode = (label, className, options = {}) => Object.assign(document.createElement(label), { className: className, ...options });
 
@@ -33,10 +29,10 @@ const findResult = () => {
 
 const addInEntry = char => {
     if (char == "AC") newText(0);
-    else if (char == "DEL") delText();
+    else if (char == "DEL") (getLength() == 1) ? newText(0) : replaceChar();
     else if (["0", "Error"].includes(getText())) (checkOperator(char)) ? {} : newText(char);
     else if (checkOperator(char) && checkOperator(getText()[getLength() - 1])) replaceChar(char);
-    else addText(char);
+    else newText(char, getText());
 }
 
 (() => document.body.appendChild(
