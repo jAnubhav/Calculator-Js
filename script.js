@@ -6,11 +6,11 @@ const getLength = () => getText().length;
 
 const newText = text => entry.innerHTML = text;
 
-const addText = text => newText(getText() + text);
+const addText = text => entry.innerHTML += text;
 
 const replaceChar = (char = "") => newText(getText().slice(0, getLength() - 1) + char);
 
-const delText = () => newText((getLength() == 1) ? 0 : replaceChar());
+const delText = () => (getLength() == 1) ? newText(0) : replaceChar();
 
 const createNode = (label, className, options = {}) => Object.assign(document.createElement(label), { className: className, ...options });
 
